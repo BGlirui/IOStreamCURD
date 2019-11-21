@@ -73,6 +73,7 @@ public class UiDesign extends JFrame{
 		jbDelect.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				canPage = false;
 				int id = 0;
 				jlPage.setText("共1页");
 				if(empDao==null) {
@@ -97,6 +98,7 @@ public class UiDesign extends JFrame{
 		jbUpdata.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				canPage = false;
 				jlPage.setText("共1页");
 				if(empDao==null) {
 					jlDisplay.setText("请先设置路径");
@@ -121,6 +123,7 @@ public class UiDesign extends JFrame{
 		jbFindOne.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				canPage = false;
 				jlPage.setText("共1页");
 				if(empDao==null) {
 					jlDisplay.setText("请先设置路径");
@@ -200,6 +203,7 @@ public class UiDesign extends JFrame{
 		jbPath.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				canPage = false;
 				jlPage.setText("共1页");
 				empDao = new EmployeeDao(jtPath.getText());
 				jlDisplay.setText("路径成功设置为："+jtPath.getText());
