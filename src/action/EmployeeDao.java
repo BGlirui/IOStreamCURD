@@ -121,6 +121,8 @@ public class EmployeeDao {
 	
 	public Employee findOne(int id) {
 		List<Employee> empList = new ArrayList<Employee>();
+		Employee emp = null;
+		boolean is = true;
 		if(this.file.canRead()) {
 			try {
 				ObjectInputStream iss = new ObjectInputStream(new FileInputStream(this.file));
@@ -134,7 +136,22 @@ public class EmployeeDao {
 		if(id>=empList.size()||id<0) {
 			return null;
 		}else {
-			return empList.get(id);
+			if((id+1)==empList.get(id).getId()){
+				emp = empList.get(id);
+			}else if((id+1)>empList.get(id).getId()){
+				for(int i=id+1;i<empList.size();i++){
+					if((id+1)==empList.get(i).getId()){
+						emp=empList.get(i);
+					}
+				}
+			}else{
+				for(int i=id+1;i>0;i--){
+					if((id+1)==empList.get(i).getId()){
+						emp=empList.get(i);
+					}
+				}
+			}
+			return emp;
 		}
 	}
 }
